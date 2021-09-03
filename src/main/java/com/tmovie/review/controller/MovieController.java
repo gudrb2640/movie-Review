@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/movie")
 @Log4j2
@@ -37,7 +39,11 @@ public class MovieController {
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
         log.info("List //  pageRequestDTO:" + pageRequestDTO);
+        for (MovieDTO movieDTO:
+                movieService.getList(pageRequestDTO).getDtoList()) {
+            log.info(movieDTO.getReviewCnt());
 
+        }
         model.addAttribute("result", movieService.getList(pageRequestDTO));
     }
 

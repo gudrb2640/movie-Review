@@ -12,7 +12,7 @@
             </span>
         </h1>
 
-        <form action="/movie/list" method="get" id="searchFrom">
+        <form action="movie/list" method="get" id="searchFrom">
             <input type="hidden" name="page" value="1">
         </form>
 
@@ -39,7 +39,7 @@
                         [[${dto.title}]]
                     </td>
                     <td>[[${dto.reviewCnt}]]</td>
-                    <td>[[${dto.avg}]]</td>
+                    <td>[[${#numbers.formatDecimal(dto.avg,1,1)}]]</td>
                     <td>[[${#temporals.format(dto.regDate,'yyyy/MM/dd')}]]</td>
                 </tr>
             </tbody>
